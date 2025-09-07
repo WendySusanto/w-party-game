@@ -13,7 +13,6 @@ import { Copy, Crown, Users, Gamepad2, Play, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 import { GameService } from "@/lib/gameService";
 import { Game, Player, Room } from "@/lib/supabaseClient";
-import { debug } from "console";
 
 const RoomLobby = () => {
   const { roomId } = useParams();
