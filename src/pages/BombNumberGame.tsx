@@ -175,11 +175,11 @@ const BombNumberGame = () => {
       } else if (guess < gameState.bombNumber) {
         // Increase minimum range
         newGameState.minRange = guess + 1;
-        result = `Too low! New range: ${guess + 1}-${gameState.maxRange}`;
+        result = `New range: ${guess + 1}-${gameState.maxRange}`;
       } else {
         // Decrease maximum range
         newGameState.maxRange = guess - 1;
-        result = `Too high! New range: ${gameState.minRange}-${guess - 1}`;
+        result = `New range: ${gameState.minRange}-${guess - 1}`;
       }
 
       // Add to history
@@ -276,16 +276,16 @@ const BombNumberGame = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-items-start md:justify-between mb-8">
           <Button variant="ghost" onClick={leaveGame} className="gap-2">
             <ArrowLeft className="w-4 h-4" />
-            Back to Lobby
+            <span className="hidden md:inline">Back to Lobby</span>
           </Button>
 
-          <div className="text-center">
-            <h1 className="text-3xl font-bold mb-2 flex items-center gap-2 justify-center">
+          <div className="md:text-center ml-5 md:ml-0">
+            <h1 className="text-2xl font-bold mb-2 flex items-center gap-2 justify-center">
               <Bomb className="w-8 h-8 text-destructive" />
               Bomb Number
             </h1>
@@ -294,7 +294,7 @@ const BombNumberGame = () => {
             </Badge>
           </div>
 
-          <div className="w-24"></div>
+          <div className="md:w-24"></div>
         </div>
 
         {!gameState.gameOver ? (
