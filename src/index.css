@@ -1,0 +1,363 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Gaming Theme Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Container configuration */
+  --container-center: true;
+  --container-padding: 2rem;
+  --container-screens-2xl: 1400px;
+
+  /* Gaming Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-bounce-subtle: bounce-subtle 0.6s ease-in-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-fade-in: fade-in 0.5s ease-out;
+
+  /* Gaming Keyframes */
+  @keyframes accordion-down: {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up: {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes pulse-glow: {
+    0%,
+    100% {
+      box-shadow: 0 0 20px hsl(220 100% 60% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(220 100% 60% / 0.6);
+    }
+  }
+  @keyframes bounce-subtle: {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes slide-up: {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in: {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  /* Gaming Dark Theme */
+  --radius: 0.75rem;
+  --background: hsl(230 30% 8%);
+  --foreground: hsl(210 40% 98%);
+  --card: hsl(230 25% 12%);
+  --card-foreground: hsl(210 40% 98%);
+  --popover: hsl(230 25% 12%);
+  --popover-foreground: hsl(210 40% 98%);
+
+  /* Gaming Primary - Electric Blue */
+  --primary: hsl(220 100% 60%);
+  --primary-foreground: hsl(230 30% 8%);
+
+  /* Gaming Secondary - Purple */
+  --secondary: hsl(280 70% 55%);
+  --secondary-foreground: hsl(210 40% 98%);
+
+  --muted: hsl(230 20% 20%);
+  --muted-foreground: hsl(215 16% 65%);
+
+  /* Gaming Accent - Neon Green */
+  --accent: hsl(150 80% 50%);
+  --accent-foreground: hsl(230 30% 8%);
+
+  /* Gaming Destructive - Electric Red */
+  --destructive: hsl(0 85% 60%);
+  --destructive-foreground: hsl(210 40% 98%);
+
+  --border: hsl(230 20% 25%);
+  --input: hsl(230 20% 18%);
+  --ring: hsl(220 100% 60%);
+
+  /* Gaming Colors for Charts */
+  --chart-1: hsl(220 100% 60%);
+  --chart-2: hsl(280 70% 55%);
+  --chart-3: hsl(150 80% 50%);
+  --chart-4: hsl(0 85% 60%);
+  --chart-5: hsl(320 60% 50%);
+
+  /* Sidebar Colors */
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+
+  /* Gaming Gradients */
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(220 100% 60%),
+    hsl(280 70% 55%)
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    hsl(280 70% 55%),
+    hsl(320 60% 50%)
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    hsl(150 80% 50%),
+    hsl(180 70% 45%)
+  );
+  --gradient-danger: linear-gradient(135deg, hsl(0 85% 60%), hsl(15 85% 55%));
+
+  /* Gaming Shadows */
+  --shadow-glow: 0 0 20px hsl(220 100% 60% / 0.3);
+  --shadow-card: 0 8px 32px hsl(230 30% 8% / 0.8);
+  --shadow-button: 0 4px 20px hsl(220 100% 60% / 0.4);
+}
+
+.dark {
+  /* Same as root - always dark gaming theme */
+  --background: hsl(230 30% 8%);
+  --foreground: hsl(210 40% 98%);
+  --card: hsl(230 25% 12%);
+  --card-foreground: hsl(210 40% 98%);
+  --popover: hsl(230 25% 12%);
+  --popover-foreground: hsl(210 40% 98%);
+  --primary: hsl(220 100% 60%);
+  --primary-foreground: hsl(230 30% 8%);
+  --secondary: hsl(280 70% 55%);
+  --secondary-foreground: hsl(210 40% 98%);
+  --muted: hsl(230 20% 20%);
+  --muted-foreground: hsl(215 16% 65%);
+  --accent: hsl(150 80% 50%);
+  --accent-foreground: hsl(230 30% 8%);
+  --destructive: hsl(0 85% 60%);
+  --destructive-foreground: hsl(210 40% 98%);
+  --border: hsl(230 20% 25%);
+  --input: hsl(230 20% 18%);
+  --ring: hsl(220 100% 60%);
+  --chart-1: hsl(220 100% 60%);
+  --chart-2: hsl(280 70% 55%);
+  --chart-3: hsl(150 80% 50%);
+  --chart-4: hsl(0 85% 60%);
+  --chart-5: hsl(320 60% 50%);
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  /* Gaming Gradient Classes */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-danger {
+    background: var(--gradient-danger);
+  }
+
+  /* Gaming Shadow Classes */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-button {
+    box-shadow: var(--shadow-button);
+  }
+
+  /* Gaming Animation Classes */
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 0.6s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Gaming Keyframes */
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px hsl(220 100% 60% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(220 100% 60% / 0.6);
+    }
+  }
+
+  @keyframes bounce-subtle {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
